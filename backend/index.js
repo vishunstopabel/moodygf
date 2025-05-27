@@ -44,15 +44,27 @@ const qdrantclient = new QdrantClient({
   host: "localhost",
   port: 6333,
 });
-// async function createCollection() {
-//   await qdrantclient.createCollection("girlfriend-chat", {
-//     vectors: {
-//       size: 768, // or whatever embedding size `text-embedding-004` returns
-//       distance: "Cosine",
-//     },
-//   });
-// }
-// createCollection(); ///uncomment this line to create the collection if it doesn't exist ...commenrt it after the first run
+async function ensureCollection() {
+  const collections = await qdrantclient.getCollections();
+  const exists = collections.collections.some(
+    (col) => col.name === "girlfriend-chat"
+  );
+
+  if (!exists) {
+    await qdrantclient.createCollection("girlfriend-chat", {
+      vectors: {
+        size: 768, // Match your embedding size
+        distance: "Cosine",
+      },
+    });
+    console.log("✅ Collection created: girlfriend-chat");
+  } else {
+    console.log("✅ Collection already exists: girlfriend-chat");
+  }
+}
+
+ensureCollection();
+
 const elevenlabs = new ElevenLabsClient();
 
 app.get("/", async (req, res) => res.send("Server is running 🚀"));
