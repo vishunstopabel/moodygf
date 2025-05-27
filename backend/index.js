@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", // Adjust this to your frontend URL
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
   })
 );
@@ -53,7 +53,7 @@ async function ensureCollection() {
   if (!exists) {
     await qdrantclient.createCollection("girlfriend-chat", {
       vectors: {
-        size: 768, // Match your embedding size
+        size: 768,
         distance: "Cosine",
       },
     });
