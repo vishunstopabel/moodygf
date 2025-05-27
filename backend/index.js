@@ -33,9 +33,9 @@ const client = createClient({
 async function connectRedis() {
   try {
     await client.connect();
-    console.log("✅ Connected to Redis");
+    console.log(" Connected to Redis");
   } catch (error) {
-    console.error("❌ Error connecting to Redis:", error);
+    console.error("Error connecting to Redis:", error);
   }
 }
 connectRedis();
@@ -57,9 +57,9 @@ async function ensureCollection() {
         distance: "Cosine",
       },
     });
-    console.log("✅ Collection created: girlfriend-chat");
+    console.log("Collection created: girlfriend-chat");
   } else {
-    console.log("✅ Collection already exists: girlfriend-chat");
+    console.log(" Collection already exists: girlfriend-chat");
   }
 }
 
@@ -123,7 +123,7 @@ User: "${message}"
     try {
       parsed = JSON.parse(cleaned);
     } catch (err) {
-      console.error("❌ Invalid JSON from Gemini:", cleaned);
+      console.error(" Invalid JSON from Gemini:", cleaned);
       return res.status(500).json({ error: "AI response invalid format" });
     }
     const audio = await getAudioResponse(parsed.answer);
@@ -160,7 +160,7 @@ User: "${message}"
       audio: base64Audio,
     });
   } catch (err) {
-    console.error("❌ Chat Error:", err);
+    console.error(" Chat Error:", err);
     res.status(500).json({ error: "Something went wrong." });
   }
 });
@@ -195,5 +195,5 @@ const getAudioResponse = async (text) => {
 };
 
 app.listen(5000, () => {
-  console.log("🔥 Server is running on http://localhost:5000");
+  console.log(" Server is running on http://localhost:5000");
 });
