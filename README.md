@@ -44,6 +44,9 @@ docker compose up -d       # Start Redis & Quadrant DB containers
 npm install                # Install backend dependencies
 npm run dev
 
+
+---
+
 ## 🌐 Run the Frontend
 
 cd frontend
@@ -51,12 +54,14 @@ npm install           # Install frontend dependencies
 npm run dev           # Start frontend (usually runs at http://localhost:5173)
 
 
+---
+
 ## 🛠️ Environment Variables
 Create a .env file in the backend/ folder and add:
 ELEVENLABS_API_KEY=your_elevenlabs_api_key
 GOOGLE_API_KEY=your_gemiai_api_key
 
-
+---
 
 ## ✅ How to Use
 1 Make sure backend and frontend are running.
