@@ -44,7 +44,7 @@ docker compose up -d       # Start Redis & Quadrant DB containers
 npm install                # Install backend dependencies
 npm run dev
 
-##🌐 Run the Frontend
+🌐 Run the Frontend
 
 cd frontend
 npm install           # Install frontend dependencies
